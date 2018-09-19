@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "981905831875",
+    "firebase_url": "https://gametimegiving-1b528.firebaseio.com",
+    "project_id": "gametimegiving-1b528",
+    "storage_bucket": "gametimegiving-1b528.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:981905831875:android:11c37e1f76d1d5c8",
+        "android_client_info": {
+          "package_name": "com.gametimegiving.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "981905831875-2j882o0t7pap1kv6c6efkldqsa6hkita.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gametimegiving.android",
+            "certificate_hash": "9c226dc5296449f3a18bea65677e47f7a8509f22"
+          }
+        },
+        {
+          "client_id": "981905831875-9ja6n1arddk76tk8cha4ngrmlaa6rrq5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gametimegiving.android",
+            "certificate_hash": "65c6db2d28c2477a9e6625033b7afce309e38b33"
+          }
+        },
+        {
+          "client_id": "981905831875-vvucgikafn0o9cjgfl6eqmv5f79gg5j7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDer-o9INmSfZ7bITUbqfREQunSZACiLDA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "981905831875-vvucgikafn0o9cjgfl6eqmv5f79gg5j7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

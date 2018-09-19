@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp"
+    android:layout_height="255dp"
+    android:background="#FFFFFF"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:layout_editor_absoluteY="81dp">
+
+    <TextView
+        android:id="@+id/tvhometeamname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/ivhometeamlogo"
+        app:layout_constraintHorizontal_bias="0.38"
+        app:layout_constraintStart_toStartOf="@+id/ivhometeamlogo"
+        app:layout_constraintTop_toBottomOf="@+id/lblselectyourteam"
+        tools:text="Richwood"/>
+
+    <TextView
+        android:id="@+id/tvhometeammascot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="160dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="160dp"
+        android:layout_marginStart="32dp"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/btncancel"
+        app:layout_constraintEnd_toStartOf="@+id/tvawayteammascot"
+        app:layout_constraintHorizontal_bias="0.34"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivhometeamlogo"
+        tools:text="Rams"/>
+
+    <TextView
+        android:id="@+id/tvawayteamname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/ivawayteamlogo"
+        app:layout_constraintEnd_toEndOf="@+id/ivawayteamlogo"
+        app:layout_constraintHorizontal_bias="0.578"
+        app:layout_constraintStart_toStartOf="@+id/ivawayteamlogo"
+        app:layout_constraintTop_toBottomOf="@+id/lblselectyourteam"
+        app:layout_constraintVertical_bias="0.45"
+        tools:text="Wossman"/>
+
+    <TextView
+        android:id="@+id/tvawayteammascot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="8dp"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/btncancel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivawayteamlogo"
+        app:layout_constraintVertical_bias="0.375"
+        tools:text="Wildcats"/>
+
+    <ImageButton
+        android:id="@+id/ivhometeamlogo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/placeholder"
+        app:layout_constraintBottom_toTopOf="@+id/tvhometeammascot"
+        app:layout_constraintEnd_toEndOf="@+id/tvhometeammascot"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tvhometeammascot"
+        app:layout_constraintTop_toBottomOf="@+id/tvhometeamname"
+        app:layout_constraintVertical_bias="0.53999996"
+        app:srcCompat="@drawable/bt_ic_android_pay"/>
+
+    <ImageButton
+        android:id="@+id/ivawayteamlogo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:contentDescription="@string/placeholder"
+        app:layout_constraintBottom_toBottomOf="@+id/versus"
+        app:layout_constraintEnd_toEndOf="@+id/tvawayteammascot"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toStartOf="@+id/tvawayteammascot"
+        app:layout_constraintTop_toTopOf="@+id/versus"
+        app:layout_constraintVertical_bias="1.0"
+        />
+
+    <Button
+        android:id="@+id/btncancel"
+        android:layout_width="284dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/Cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/versus"
+        app:layout_constraintVertical_bias="0.666"/>
+
+    <ImageView
+        android:id="@+id/versus"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivhometeamlogo"
+        app:layout_constraintEnd_toStartOf="@+id/ivawayteamlogo"
+        app:layout_constraintStart_toEndOf="@+id/ivhometeamlogo"
+        app:srcCompat="@drawable/versus"/>
+
+    <TextView
+        android:id="@+id/lblselectyourteam"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/select_your_team"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/tw__composer_black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
+</android.support.constraint.ConstraintLayout>
