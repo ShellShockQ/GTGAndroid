@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,6 +16,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -37,6 +41,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.FirebaseUserMetadata;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -49,9 +55,10 @@ public abstract class GTGBaseActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     private Context mContext;
-    private String username;
+    private String username="";
     String name;
     String email;
+    String sPhotoUrl="";
     private TextView tv_PreferredCharityNotice;
     private Handler mHandler = new Handler();
     boolean firstTimer;
@@ -67,6 +74,7 @@ public abstract class GTGBaseActivity extends AppCompatActivity {
             gtguser = new User(userId, name, email, photoUrl);
 
         }
+
     }
 
     public String ReadSharedPref(String key, Activity activity) {
@@ -95,7 +103,7 @@ public abstract class GTGBaseActivity extends AppCompatActivity {
         SharedPreferences sharedPref = this.getSharedPreferences(Constant.MyPREFERENCES, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putInt(key, iVal);
-        editor.commit();
+        editor.apply();
 
     }
 
@@ -106,7 +114,9 @@ public abstract class GTGBaseActivity extends AppCompatActivity {
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         mDrawerLayout.addDrawerListener(mDrawerToggle);
         mDrawerToggle.syncState();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if(getSupportActionBar()!=null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
@@ -152,13 +162,15 @@ public abstract class GTGBaseActivity extends AppCompatActivity {
     }
 
     public void SetUserProfileInfo(View view, User user) {
-        TextView tvUserName = view.findViewById(R.id.tvusername);
-        ImageView userProfileImage = view.findViewById(R.id.userprofileimage);
-        tvUserName.setText(String.format("Logged In As: %s", user.getName()));
-        String sPhotoUrl = "";
+            TextView tvUserName = view.findViewById(R.id.tvusername);
+            ImageView userProfileImage = view.findViewById(R.id.userprofileimage);
+        if(user.getName()!=null) { username=user.getName(); }
+            tvUserName.setText(String.format("Logged In As: %s",username ));
+
         try {
             sPhotoUrl = photoUrl.toString();
         } catch (NullPointerException ex) {
+            return;
 
         }
         if (sPhotoUrl != ""){
@@ -206,14 +218,15 @@ public abstract class GTGBaseActivity extends AppCompatActivity {
     }
 
     public int GetPledgeCount() {
-        int Count = ReadIntSharedPref(getString(R.string.pledgeCountSharedPrefName), this);
-        return Count;
+        return  ReadIntSharedPref(getString(R.string.pledgeCountSharedPrefName), this);
     }
 
     public void SaveUserLocal(FirebaseUser user) {
         Utilities.WriteStringSharedPref("user", user.getUid(), this);
         Utilities.WriteStringSharedPref("name", user.getDisplayName(), this);
-        Utilities.WriteStringSharedPref("photoURL", user.getPhotoUrl().toString(), this);
+        if(user.getPhotoUrl()!=null) {
+            Utilities.WriteStringSharedPref("photoURL", user.getPhotoUrl().toString(), this);
+        }
     }
     public void ShowWelcomeDialog(String status) {
         new FancyGifDialog.Builder(this)
@@ -312,13 +325,13 @@ public abstract class GTGBaseActivity extends AppCompatActivity {
         Log.d(TAG, String.format("Inside isFirstTime firstTimer is %s and val is %s",
                 String.valueOf(firstTimer), String.valueOf(val)));
         if (val == true) {
-            if (game.getGamestatus() == Constant.GAMENOTSTARTED) {
+            if (game.getGamestatus().equals(Constant.GAMENOTSTARTED)) {
                 status = "Not Started";
             }
-            if (game.getGamestatus() == Constant.GAMEINPROGRESS) {
+            if (game.getGamestatus().equals(Constant.GAMEINPROGRESS)) {
                 status = "In Progress";
             }
-            if (game.getGamestatus() == Constant.GAMEOVER) {
+            if (game.getGamestatus().equals(Constant.GAMEOVER)) {
                 status = "Over";
             }
             ShowWelcomeDialog(status);
@@ -361,7 +374,6 @@ public abstract class GTGBaseActivity extends AppCompatActivity {
             firstTimer = true;
         } else {
             Toast.makeText(this, String.format("Welcome Back %s", auth.getCurrentUser().getDisplayName()), Toast.LENGTH_LONG).show();
-            firstTimer = false;
         }
         return firstTimer;
     }
