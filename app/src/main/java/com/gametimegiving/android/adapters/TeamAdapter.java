@@ -1,4 +1,4 @@
-package com.gametimegiving.android.Adapters;
+package com.gametimegiving.android.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -12,7 +12,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.gametimegiving.android.Helpers.GTGGlideModule;
 import com.gametimegiving.android.R;
 import com.gametimegiving.android.models.Team;
 import com.google.firebase.storage.FirebaseStorage;

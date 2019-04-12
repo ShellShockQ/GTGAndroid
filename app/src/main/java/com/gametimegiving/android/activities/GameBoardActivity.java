@@ -1,5 +1,5 @@
 
-package com.gametimegiving.android.Activities;
+package com.gametimegiving.android.activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -17,13 +17,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.appsee.Appsee;
 import com.braintreepayments.api.dropin.DropInActivity;
 import com.braintreepayments.api.dropin.DropInRequest;
 import com.braintreepayments.api.dropin.DropInResult;
 import com.bumptech.glide.Glide;
 import com.gametimegiving.android.Helpers.Constant;
 import com.gametimegiving.android.Helpers.CustomizeDialog;
-import com.gametimegiving.android.Helpers.GTGGlideModule;
 import com.gametimegiving.android.Helpers.TeamSelectorDialog;
 import com.gametimegiving.android.Helpers.Utilities;
 import com.gametimegiving.android.R;
@@ -103,6 +103,7 @@ public class GameBoardActivity extends GTGBaseActivity implements View.OnClickLi
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Appsee.start();
         playerID = ReadSharedPref("player", this);
         Log.d(TAG, "Flow Step#1");
         mPlayer.setId(playerID);
@@ -249,7 +250,7 @@ public class GameBoardActivity extends GTGBaseActivity implements View.OnClickLi
         String AwayTeam = mGame.getAwayteam().getTeamname();
         if (MyTeams.contains(HomeTeam)) homeoraway = "home";
         if (MyTeams.contains(AwayTeam)) homeoraway = "away";
-        if (homeoraway == "") {
+        if (homeoraway.equals("")) {
             openDailogTeamChooser(mGame);
             GTGSnackBar(findViewById(R.id.GameBoardLayout), "Pick Your Team");
         } else {
@@ -409,7 +410,7 @@ public class GameBoardActivity extends GTGBaseActivity implements View.OnClickLi
         String user = ReadSharedPref("user", this);
         String player = ReadSharedPref("player", this);
         String myteam = ReadSharedPref("myteam", this);
-        if (gameid != "" && user != "" && player != "" && myteam != "") {
+        if (!gameid.equals("") && !user.equals("") && !player.equals("") && !myteam.equals("")) {
             Map<String, Object> pledge = new HashMap<>();
             pledge.put("game", gameid);
             pledge.put("user", user);
@@ -439,18 +440,18 @@ public class GameBoardActivity extends GTGBaseActivity implements View.OnClickLi
             openDailogPledgesAdd(amount);
         } else {
             String missingItem = "";
-            if (gameid == "") {
+            if (gameid.equals("")) {
                 missingItem = "GameId";
                 mGame.DetermineCurrentGame(this);
             }
-            if (user == "") {
+            if (user.equals("")) {
                 missingItem = "UserId";
             }
-            if (player == "") {
+            if (player.equals("")) {
                 missingItem = "PlayerId";
                 DeterminePlayer();
             }
-            if (myteam == "") {
+            if (myteam.equals("")) {
                 missingItem = "Your Team";
                 DetermineHomeOrAway();
             }

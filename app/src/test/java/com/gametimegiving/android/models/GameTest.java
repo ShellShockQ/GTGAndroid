@@ -1,6 +1,6 @@
 package com.gametimegiving.android.models;
 
-import com.gametimegiving.android.Activities.GameBoardActivity;
+import com.gametimegiving.android.activities.GameBoardActivity;
 
 import junit.framework.Assert;
 

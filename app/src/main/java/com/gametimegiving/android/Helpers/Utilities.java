@@ -22,6 +22,7 @@ import java.text.ParseException;
 
 public class Utilities {
 
+
     public void ShowMsg(String message, Context ctx) {
         Toast.makeText(ctx, message, Toast.LENGTH_LONG).show();
     }

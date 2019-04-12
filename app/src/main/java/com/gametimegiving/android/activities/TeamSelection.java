@@ -1,19 +1,19 @@
-package com.gametimegiving.android.Activities;
+package com.gametimegiving.android.activities;
 
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
-import com.gametimegiving.android.Adapters.TeamAdapter;
+import com.appsee.Appsee;
 import com.gametimegiving.android.R;
+import com.gametimegiving.android.adapters.TeamAdapter;
 import com.gametimegiving.android.models.Team;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
-
 public class TeamSelection extends GTGBaseActivity {
     final public FirebaseFirestore db = FirebaseFirestore.getInstance();
     final public String TAG = "TeamSelection";
@@ -24,6 +24,7 @@ public class TeamSelection extends GTGBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Appsee.start();
         setContentView(R.layout.activity_team_selection);
         SetNavDrawer();
         GetTeam("ALL");

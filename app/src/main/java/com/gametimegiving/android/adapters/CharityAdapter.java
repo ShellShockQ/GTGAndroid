@@ -1,4 +1,4 @@
-package com.gametimegiving.android.Adapters;
+package com.gametimegiving.android.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,10 +13,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.gametimegiving.android.Activities.CharityDetail;
-import com.gametimegiving.android.Activities.GTGBaseActivity;
-import com.gametimegiving.android.Helpers.GTGGlideModule;
 import com.gametimegiving.android.R;
+import com.gametimegiving.android.activities.CharityDetail;
+import com.gametimegiving.android.activities.GTGBaseActivity;
 import com.gametimegiving.android.models.Charity;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;

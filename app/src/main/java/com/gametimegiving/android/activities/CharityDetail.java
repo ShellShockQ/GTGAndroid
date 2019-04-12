@@ -1,4 +1,4 @@
-package com.gametimegiving.android.Activities;
+package com.gametimegiving.android.activities;
 
 import android.app.Activity;
 import android.content.Context;
@@ -15,11 +15,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.appsee.Appsee;
 import com.bumptech.glide.Glide;
-import com.gametimegiving.android.Adapters.CharityAdapter;
-import com.gametimegiving.android.Helpers.GTGGlideModule;
 import com.gametimegiving.android.Helpers.Utilities;
 import com.gametimegiving.android.R;
+import com.gametimegiving.android.adapters.CharityAdapter;
 import com.gametimegiving.android.models.Charity;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -47,6 +47,7 @@ public class CharityDetail extends GTGBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Appsee.start();
         Bundle bundle = getIntent().getExtras();
         charityid = bundle.getString("charityid");
         Log.d(TAG, String.format("Opening the detail for charity %s", charityid));

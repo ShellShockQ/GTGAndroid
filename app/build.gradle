@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'io.fabric'
+apply plugin: 'com.appsee.appsee-plugin'
 
 android {
 
@@ -8,8 +9,8 @@ android {
         applicationId "com.gametimegiving.android"
         minSdkVersion 16
         targetSdkVersion 27
-        versionCode 18
-        versionName "1.46"
+        versionCode 19
+        versionName "1.47"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         resConfigs "en"
         multiDexEnabled true
@@ -56,6 +57,8 @@ dependencies {
     implementation'pl.droidsonroids.gif:android-gif-drawable:1.2.15'
     implementation 'com.github.bumptech.glide:glide:4.7.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
+    compile 'com.android.volley:volley:1.1.1'
+    implementation 'com.appsee:appsee-android:+'
 
 //   // implementation 'com.github.Shashank02051997:FancyGifDialog-Android:1.1'
 //    implementation 'com.github.Shashank02051997:FancyToast-Android:0.1.3'

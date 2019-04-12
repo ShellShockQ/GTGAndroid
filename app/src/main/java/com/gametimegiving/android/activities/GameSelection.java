@@ -1,12 +1,13 @@
-package com.gametimegiving.android.Activities;
+package com.gametimegiving.android.activities;
 
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
-import com.gametimegiving.android.Adapters.GameAdapter;
+import com.appsee.Appsee;
 import com.gametimegiving.android.R;
+import com.gametimegiving.android.adapters.GameAdapter;
 import com.gametimegiving.android.models.Game;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -21,17 +22,21 @@ public class GameSelection extends GTGBaseActivity {
     private RecyclerView mRecyclerView;
     private GameAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-
+    private String responseFromApiCall = "Test";
     //  private DrawerLayout mDrawerLayout;
     //  private ActionBarDrawerToggle mDrawerToggle;
     //   private Context mContext = this;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Appsee.start();
         setContentView(R.layout.activity_game_selection);
         SetNavDrawer();
 
         GetGame("ALL");
+        //  Utilities util = new Utilities();
+
+
 //        mDrawerLayout = findViewById(R.id.drawer_layout);
 //        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
 //        mDrawerLayout.addDrawerListener(mDrawerToggle);
@@ -68,7 +73,6 @@ public class GameSelection extends GTGBaseActivity {
 //        }
 //        return super.onOptionsItemSelected(item);
 //    }
-
     private void SetAdapter() {
         mRecyclerView = findViewById(R.id.listofgames);
         mRecyclerView.setHasFixedSize(true);

@@ -1,4 +1,4 @@
-package com.gametimegiving.android.Adapters;
+package com.gametimegiving.android.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

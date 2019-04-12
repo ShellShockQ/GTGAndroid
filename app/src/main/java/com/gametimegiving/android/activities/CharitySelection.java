@@ -1,4 +1,4 @@
-package com.gametimegiving.android.Activities;
+package com.gametimegiving.android.activities;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -8,8 +8,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
-import com.gametimegiving.android.Adapters.CharityAdapter;
+import com.appsee.Appsee;
 import com.gametimegiving.android.R;
+import com.gametimegiving.android.adapters.CharityAdapter;
 import com.gametimegiving.android.models.Charity;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -30,6 +31,7 @@ public class CharitySelection extends GTGBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Appsee.start();
         setContentView(R.layout.activity_charity_selection);
         SetNavDrawer();
         GetCharity("ALL");

@@ -13,20 +13,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Activities.GameBoardActivity"
+            android:name=".activities.GameBoardActivity"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".Activities.CharitySelection">
+        <activity android:name=".activities.CharitySelection">
         </activity>
-        <activity android:name=".Activities.CharityDetail">
+        <activity android:name=".activities.CharityDetail">
         </activity>
-        <activity android:name=".Activities.TeamSelection">
+        <activity android:name=".activities.TeamSelection">
         </activity>
-        <activity android:name=".Activities.GameSelection">
+        <activity android:name=".activities.GameSelection">
         </activity>
-        <activity android:name=".Activities.Profile">
+        <activity android:name=".activities.Profile">
         </activity>
-        <activity android:name=".Activities.LoginActivity">
+        <activity android:name=".activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -39,6 +39,9 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>
             </intent-filter>
         </service>
+        <meta-data
+            android:name="com.appsee.ApiKey"
+            android:value="4c35a599ae05436aaa61015447388096" />
     </application>
 
 </manifest>
