@@ -1,10 +1,12 @@
 package com.gametimegiving.android.models;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.gametimegiving.android.Helpers.Utilities;
+import com.gametimegiving.android.activities.GameSelection;
 import com.google.firebase.firestore.IgnoreExtraProperties;
 
 @IgnoreExtraProperties
@@ -162,7 +164,9 @@ public class Game implements Parcelable {
         //TODO:(1) Get the closest game based on the location of the user
         //TODO:(2) Get the game based on the games the user follows
         if (this.getGameid() == null) {
-            this.setGameid("suYroi6ZuratHkBDuyF7");
+            //  this.setGameid("suYroi6ZuratHkBDuyF7");
+            Intent intent = new Intent(activity.getApplicationContext(), GameSelection.class);
+            activity.getApplicationContext().startActivity(intent);
         }
         Utilities.WriteStringSharedPref("gameid", this.getGameid(), activity);
         return this.getGameid();

@@ -13,7 +13,9 @@ import android.widget.Toast;
 
 import com.gametimegiving.android.Helpers.GlideApp;
 import com.gametimegiving.android.R;
+import com.gametimegiving.android.activities.GTGBaseActivity;
 import com.gametimegiving.android.models.Game;
+import com.gametimegiving.android.models.Team;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -40,6 +42,7 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.GameViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull GameViewHolder holder, int position) {
+        boolean homeTeamFan = false;
         Game game = mGameList.get(position);
         holder.tvHomeTeamName.setText(game.getHometeam().getTeamname());
         holder.tvHomeTeamMascot.setText(game.getHometeam().getMascot());
@@ -74,6 +77,31 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.GameViewHolder
         GlideApp.with(mCtx)
                 .load(awayTeamLogoReference)
                 .into(holder.ivAwayTeamLogo);
+
+        holder.ivHomeTeamLogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mCtx, "you can selected the home team as your team", Toast.LENGTH_SHORT).show();
+                Team homeTeam = new Team(game.getHometeam().getTeamname(),
+                        game.getHometeam().getMascot(),
+                        game.getHometeam().getCharity(),
+                        game.getHometeam().getCharity().getLogo());
+                GTGBaseActivity.RecordTeam(homeTeam);
+            }
+        });
+        holder.ivAwayTeamLogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mCtx, "you can selected the visiting team as your team", Toast.LENGTH_SHORT).show();
+                Team awayTeam = new Team(game.getAwayteam().getTeamname(),
+                        game.getAwayteam().getMascot(),
+                        game.getAwayteam().getCharity(),
+                        game.getAwayteam().getCharity().getLogo());
+                GTGBaseActivity.RecordTeam(awayTeam);
+
+            }
+        });
+
 
 
     }

@@ -29,6 +29,7 @@ import com.gametimegiving.android.Helpers.FancyGifDialogListener;
 import com.gametimegiving.android.Helpers.Utilities;
 import com.gametimegiving.android.R;
 import com.gametimegiving.android.models.Game;
+import com.gametimegiving.android.models.Team;
 import com.gametimegiving.android.models.User;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -103,7 +104,6 @@ public abstract class GTGBaseActivity extends AppCompatActivity {
     }
 
 
-
     public void SetNavDrawer() {
         mDrawerLayout = findViewById(R.id.drawer_layout);
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -113,6 +113,7 @@ public abstract class GTGBaseActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
         NavigationView navigationView = findViewById(R.id.nav_view);
+        View headerLayout = navigationView.getHeaderView(0);
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
@@ -151,17 +152,20 @@ public abstract class GTGBaseActivity extends AppCompatActivity {
                     }
                 });
 
-        View headerLayout = navigationView.getHeaderView(0);
-        SetUserProfileInfo(headerLayout, gtguser);
+
+        SetUserProfileInfo(gtguser);
 
     }
 
-    public void SetUserProfileInfo(View view, User user) {
-            TextView tvUserName = view.findViewById(R.id.tvusername);
-            ImageView userProfileImage = view.findViewById(R.id.userprofileimage);
-        if(user.getName()!=null) { username=user.getName(); }
-            tvUserName.setText(String.format("Logged In As: %s",username ));
-
+    public void SetUserProfileInfo(User user) {
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        View headerLayout = navigationView.getHeaderView(0);
+        TextView tvUserName = headerLayout.findViewById(R.id.tvusername);
+        ImageView userProfileImage = headerLayout.findViewById(R.id.userprofileimage);
+        String loggedInUser = "Logged Out";
+        if (user != null) {
+            loggedInUser = String.format("Logged In As: %s", user.getName());
+        }
         try {
             sPhotoUrl = photoUrl.toString();
         } catch (NullPointerException ex) {
@@ -172,9 +176,10 @@ public abstract class GTGBaseActivity extends AppCompatActivity {
             Glide.with(getApplicationContext() /* context */)
                     .load(sPhotoUrl)
                     .into(userProfileImage);
-            }
-
+        }
+        tvUserName.setText(loggedInUser);
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -201,6 +206,7 @@ public abstract class GTGBaseActivity extends AppCompatActivity {
                 break;
             case R.id.action_signout:
                 FirebaseAuth.getInstance().signOut();
+                SetUserProfileInfo(null);
                 Intent startMain = new Intent(Intent.ACTION_MAIN);
                 startMain.addCategory(Intent.CATEGORY_HOME);
                 startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -248,6 +254,10 @@ public abstract class GTGBaseActivity extends AppCompatActivity {
                 .build();
     }
 
+    public static void RecordTeam(Team team) {
+//TODO:Write team information to local database
+
+    }
     private void RunDemo() {
         //Set the Game status to Not Started
         //   String demoplayerid="sS0p0a631HWTcZUaIATy";
