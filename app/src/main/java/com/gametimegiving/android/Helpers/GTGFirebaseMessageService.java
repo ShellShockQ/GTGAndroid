@@ -52,13 +52,18 @@ public class GTGFirebaseMessageService extends FirebaseMessagingService {
     }
 
     private void sendRegistrationToSever(String token) {
-        FirebaseUser fbuser = FirebaseAuth.getInstance().getCurrentUser();
-        Log.d(TAG, "sendRegistrationToSever: " + token);
-        String userid = fbuser.getUid();
-        Map<String, Object> user = new HashMap<>();
-        user.put("userid", userid);
-        user.put("messagetoken", token);
-        db.collection("users").document(userid).update(user);
-
+        try {
+            //TODO: This code isn't going to work. The Firebase user auth needs to be properly handled.
+            //TODO: Here you are assuming the user is logged in, and he/she may not be
+            FirebaseUser fbuser = FirebaseAuth.getInstance().getCurrentUser();
+            Log.d(TAG, "sendRegistrationToSever: " + token);
+            String userid = fbuser.getUid();
+            Map<String, Object> user = new HashMap<>();
+            user.put("userid", userid);
+            user.put("messagetoken", token);
+            db.collection("users").document(userid).update(user);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 }
