@@ -8,7 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
-import com.appsee.Appsee;
+//import com.appsee.Appsee;
 import com.gametimegiving.android.R;
 import com.gametimegiving.android.adapters.CharityAdapter;
 import com.gametimegiving.android.models.Charity;
@@ -31,7 +31,7 @@ public class CharitySelection extends GTGBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Appsee.start();
+        //Appsee.start();
         setContentView(R.layout.activity_charity_selection);
         SetNavDrawer();
         GetCharity("ALL");

@@ -21,7 +21,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.appsee.Appsee;
+//import com.appsee.Appsee;
 import com.bumptech.glide.Glide;
 import com.gametimegiving.android.Helpers.Constant;
 import com.gametimegiving.android.Helpers.FancyGifDialog;
@@ -60,7 +60,7 @@ public abstract class GTGBaseActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Appsee.start();
+        //Appsee.start();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             userId = user.getUid();

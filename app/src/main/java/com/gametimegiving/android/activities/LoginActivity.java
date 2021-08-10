@@ -11,7 +11,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-import com.appsee.Appsee;
+//import com.appsee.Appsee;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
 import com.gametimegiving.android.Helpers.Utilities;
@@ -31,7 +31,7 @@ public class LoginActivity extends GTGBaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Appsee.start();
+       // Appsee.start();
         try {
             PackageInfo info = getPackageManager().getPackageInfo(
                     "com.gametimegiving.android",
@@ -79,7 +79,7 @@ public class LoginActivity extends GTGBaseActivity {
                                     getString(R.string.privacypolicyurl))
                             .setAvailableProviders(Arrays.asList(
                                     new AuthUI.IdpConfig.PhoneBuilder().build(),
-                                    new AuthUI.IdpConfig.TwitterBuilder().build(),
+                                    //new AuthUI.IdpConfig.TwitterBuilder().build(),
                                     new AuthUI.IdpConfig.GoogleBuilder().build(),
                                     new AuthUI.IdpConfig.FacebookBuilder().build(),
                                     new AuthUI.IdpConfig.EmailBuilder().build()))

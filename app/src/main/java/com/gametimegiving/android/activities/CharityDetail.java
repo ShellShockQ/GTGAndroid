@@ -15,7 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.appsee.Appsee;
+//import com.appsee.Appsee;
 import com.bumptech.glide.Glide;
 import com.gametimegiving.android.Helpers.Utilities;
 import com.gametimegiving.android.R;
@@ -47,7 +47,7 @@ public class CharityDetail extends GTGBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Appsee.start();
+       // Appsee.start();
         Bundle bundle = getIntent().getExtras();
         charityid = bundle.getString("charityid");
         Log.d(TAG, String.format("Opening the detail for charity %s", charityid));

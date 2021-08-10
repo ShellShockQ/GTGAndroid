@@ -17,7 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.appsee.Appsee;
+//import com.appsee.Appsee;
 import com.braintreepayments.api.dropin.DropInActivity;
 import com.braintreepayments.api.dropin.DropInRequest;
 import com.braintreepayments.api.dropin.DropInResult;
@@ -103,7 +103,7 @@ public class GameBoardActivity extends GTGBaseActivity implements View.OnClickLi
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Appsee.start();
+       // Appsee.start();
         playerID = ReadSharedPref("player", this);
         Log.d(TAG, "Flow Step#1");
         mPlayer.setId(playerID);
